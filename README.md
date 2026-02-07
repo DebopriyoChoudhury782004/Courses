@@ -125,10 +125,13 @@ Use these to log in after running `npm run seed` in the backend:
 
 After running backend seed and both servers:
 
-1. **Home** – Grid of courses (free and paid).
-2. **Login** – Sign up / Log in with dummy credentials above.
-3. **Course Detail** – For paid courses: enter `BFSALE25`, apply, then Subscribe.
-4. **My Courses** – List of subscribed courses with price paid and date.
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/190755f0-682b-4bef-8a95-9f7662810fc1" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/a0946ae8-70ac-4454-ba4b-46a529dff831" />
+<img width="1911" height="1074" alt="image" src="https://github.com/user-attachments/assets/f5017706-3083-47d7-a4b1-3eb545b23167" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/ea4a23ae-7e23-4295-9709-0cbbe219471d" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/449b640b-aa4b-40c9-851c-803e36427d99" />
+<img width="1919" height="1073" alt="image" src="https://github.com/user-attachments/assets/3e963008-a858-489e-b092-81c20f53e5d0" />
 
 ---
 
