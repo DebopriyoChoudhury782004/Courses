@@ -1,0 +1,50 @@
+import { createContext, useContext, useState, useEffect } from 'react';
+
+const AuthContext = createContext(null);
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(() => {
+    try {
+      const stored = localStorage.getItem('user');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  });
+  const [token, setToken] = useState(() => localStorage.getItem('token') || null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLogout = () => {
+      setUser(null);
+      setToken(null);
+    };
+    window.addEventListener('auth-logout', handleLogout);
+    setLoading(false);
+    return () => window.removeEventListener('auth-logout', handleLogout);
+  }, []);
+
+  const login = (newToken, newUser) => {
+    localStorage.setItem('token', newToken);
+    localStorage.setItem('user', JSON.stringify(newUser));
+    setToken(newToken);
+    setUser(newUser);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setToken(null);
+    setUser(null);
+    window.dispatchEvent(new Event('auth-logout'));
+  };
+
+  const value = { user, token, login, logout, isAuthenticated: !!token };
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth() {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  return ctx;
+}
